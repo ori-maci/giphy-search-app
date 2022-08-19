@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { Giphys, Daum, GiphyResponse } from "../../models/giphy.model";
 
-export default function Search({giphys}) {
+export default function Search({giphys}: {giphys: Daum[]}) {
   const router = useRouter();
 
   return (
