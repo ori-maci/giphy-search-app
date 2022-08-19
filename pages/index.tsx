@@ -6,7 +6,7 @@ import { CatGiphys, Daum, GiphyResponse } from "../models/giphy.model";
 
 export default function Home(initialData: GiphyResponse) {
 
-  const [formInputs, setFormInputs] = useState({searchTerm: null});
+  const [formInputs, setFormInputs] = useState({searchTerm: ''});
   const [searchResults, setSearchResults] = useState(new Array<Daum>());
   const [searchTerm, setSearchTerm] = useState('cats')
 
