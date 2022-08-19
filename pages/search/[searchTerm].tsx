@@ -10,7 +10,8 @@ export default function Search({giphys}: {giphys: Daum[]}) {
   return (
     <>
       <Head>
-        <title>Search</title>
+        <title>Search results for: {router.query.searchTerm}</title>
+        <meta name="description" content={giphys.map((each, index) => each.title + ' ')}></meta>
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="/styles.css" />
       </Head>

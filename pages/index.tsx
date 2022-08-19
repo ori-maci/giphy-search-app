@@ -39,7 +39,8 @@ export default function Home(initialData: GiphyResponse) {
     <>
       <div className="container">
         <Head>
-          <title>Create Next App</title>
+          <title>Giphy Search App</title>
+          <meta name="description" content="This is an example of a meta description. This will often show up in search results."></meta>
           <link rel="icon" href="/favicon.ico" />
           <link rel="stylesheet" href="/styles.css" />
         </Head>
