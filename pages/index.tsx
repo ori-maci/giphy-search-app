@@ -1,13 +1,38 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
-import { GiphyResponse } from "../models/giphy.model";
+import { CatGiphys, Daum, GiphyResponse } from "../models/giphy.model";
 
 export default function Home(initialData: GiphyResponse) {
+
+  const [formInputs, setFormInputs] = useState({searchTerm: null});
+  const [searchResults, setSearchResults] = useState(new Array<Daum>());
+  const [searchTerm, setSearchTerm] = useState('cats')
+
   useEffect(() => {
-    console.log(initialData);
-  });
+    setSearchResults(initialData.catGiphys.data)
+  }, [initialData]);
+
+  function handleInputs(event: any) {
+    console.log(event.target.value)
+    console.log(event.target.name)
+
+    let {name, value} = event.target
+    setFormInputs({ ...formInputs, [name]: value });
+  }
+
+  async function search(event: any) {
+    event.preventDefault()
+    let catGiphys = await fetch(
+      `https://api.giphy.com/v1/gifs/search?q=${formInputs.searchTerm}&api_key=F0rOk8V8tVSfvsnkLnvCqgU2SqSmFQO4&limit=10`
+    );
+    const res: CatGiphys = await catGiphys.json();
+    
+    // const daums: Daum[] = (giphys as unknown as GiphyResponse).catGiphys.data; 
+    setSearchResults(res.data);
+    setSearchTerm(formInputs.searchTerm);
+  }
 
   return (
     <div className="container">
@@ -19,10 +44,17 @@ export default function Home(initialData: GiphyResponse) {
 
       <h1>Giphy Search App</h1>
 
+      <form onSubmit={(event) => search(event)}>
+        <input name="searchTerm" onChange={(event) => handleInputs(event)} type="text" required/>
+        <button>Search</button>
+      </form>
+
+      <h1>Search results for: {searchTerm}</h1>
+
       <div className="giphy-search-results-grid">
-        {initialData.catGiphys.data.map((each) => {
+        {searchResults.map((each, index) => {
           return (
-            <div key={each.id}>
+            <div key={index}>
               <h3>{each.title}</h3>
               <img src={each.images.original.url} alt={each.title} />
             </div>
