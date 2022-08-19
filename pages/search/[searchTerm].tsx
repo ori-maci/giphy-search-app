@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Footer from "../../components/footer";
 import { Giphys, Daum, GiphyResponse } from "../../models/giphy.model";
 
 export default function Search({giphys}: {giphys: Daum[]}) {
@@ -26,6 +27,7 @@ export default function Search({giphys}: {giphys: Daum[]}) {
           );
         })}
       </div>
+      <Footer />
     </>
   );
 }
