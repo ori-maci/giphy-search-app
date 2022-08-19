@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
-import { CatGiphys, Daum, GiphyResponse } from "../models/giphy.model";
+import { Daum, GiphyResponse, Giphys } from "../models/giphy.model";
 
 export default function Home(initialData: GiphyResponse) {
 
@@ -27,7 +27,7 @@ export default function Home(initialData: GiphyResponse) {
     let catGiphys = await fetch(
       `https://api.giphy.com/v1/gifs/search?q=${formInputs.searchTerm}&api_key=F0rOk8V8tVSfvsnkLnvCqgU2SqSmFQO4&limit=10`
     );
-    const res: CatGiphys = await catGiphys.json();
+    const res: Giphys = await catGiphys.json();
     
     // const daums: Daum[] = (giphys as unknown as GiphyResponse).catGiphys.data; 
     setSearchResults(res.data);

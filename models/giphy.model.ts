@@ -1,8 +1,8 @@
 export interface GiphyResponse {
-  catGiphys: CatGiphys;
+  catGiphys: Giphys;
 }
 
-export interface CatGiphys {
+export interface Giphys {
   data: Daum[]
   pagination: Pagination
   meta: Meta
