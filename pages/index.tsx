@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { GetStaticProps } from "next";
 import { Daum, GiphyResponse, Giphys } from "../models/giphy.model";
 import Link from "next/link";
+import Image from 'next/image'
 import Footer from "../components/footer";
 
 export default function Home(initialData: GiphyResponse) {
@@ -44,6 +45,14 @@ export default function Home(initialData: GiphyResponse) {
           <link rel="icon" href="/favicon.ico" />
           <link rel="stylesheet" href="/styles.css" />
         </Head>
+
+        <div className="logo-container">
+        <Image
+            src="/../public/logo.png"
+            alt="logo"
+            layout="fill"
+        />
+      </div>
 
         <h1>Giphy Search App</h1>
 
