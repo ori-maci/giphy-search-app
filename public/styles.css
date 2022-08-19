@@ -3,3 +3,18 @@ body{
   text-align: center;
   font-family: sans-serif;
 }
+
+.container{
+  max-width: 1200px;
+  margin: auto;
+  padding: 0px 40px;
+}
+
+.giphy-search-results-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+img {
+  width: 100%;
+}
